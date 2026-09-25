@@ -1,0 +1,397 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>Ziv The Watch Guy</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500&family=Piazzolla:opsz,wght@8..30,400&family=WindSong&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      html,
+      body {
+        background: #0b0b0b;
+      }
+      body.is-loading {
+        overflow: hidden;
+      }
+      .loader {
+        position: fixed;
+        inset: 0;
+        z-index: 200;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #0b0b0b;
+        color: #f6f1e8;
+      }
+      .loader-pair {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        gap: 28px;
+      }
+      .loader-logo,
+      .loader-pct {
+        margin: 0;
+        line-height: 1;
+        user-select: none;
+      }
+    </style>
+    <script type="module" crossorigin src="/ziv-watch-guy/assets/index-DcrOaZSV.js"></script>
+    <link rel="stylesheet" crossorigin href="/ziv-watch-guy/assets/index-BpFtmNCq.css">
+  </head>
+  <body class="is-loading">
+    <div class="loader" data-loader role="status" aria-live="polite" aria-label="Loading">
+      <div class="loader-pair">
+        <p class="loader-logo">Ziv</p>
+        <p class="loader-pct" data-loader-pct>0%</p>
+      </div>
+    </div>
+    <div class="page">
+      <header class="nav" data-nav>
+        <button class="nav-menu" type="button" data-menu-open>Menu</button>
+        <a href="#" class="nav-logo">Ziv The Watch Guy</a>
+        <div class="nav-end">
+          <a class="nav-cart" href="#shop" aria-label="Cart">
+            <svg viewBox="0 0 48 48" fill="none" aria-hidden="true">
+              <path d="M23.9998 4.59375C28.0902 4.59375 31.406 7.90964 31.406 12V12.5937H35.9998L36.1355 12.6006C36.8085 12.6652 37.3493 13.2056 37.4021 13.8926L39.4021 39.8926C39.432 40.2828 39.2978 40.6678 39.032 40.9551C38.7659 41.2424 38.3914 41.4062 37.9998 41.4062H9.99979C9.60824 41.4061 9.23362 41.2424 8.96756 40.9551C8.70192 40.6679 8.56757 40.2827 8.59745 39.8926L10.5974 13.8926C10.6538 13.1601 11.2652 12.594 11.9998 12.5937H16.5935V12C16.5935 7.90977 19.9096 4.59397 23.9998 4.59375ZM11.5183 38.5937H36.4812L34.6971 15.4062H31.406V18C31.406 18.7766 30.7764 19.4062 29.9998 19.4062C29.2233 19.406 28.5935 18.7765 28.5935 18V15.4062H19.406V18C19.406 18.7766 18.7764 19.4062 17.9998 19.4062C17.2233 19.406 16.5935 18.7765 16.5935 18V15.4062H13.3025L11.5183 38.5937ZM23.9998 7.40625C21.4629 7.40647 19.406 9.46308 19.406 12V12.5937H28.5935V12C28.5935 9.46294 26.5368 7.40625 23.9998 7.40625Z" fill="currentColor"/>
+            </svg>
+          </a>
+          <a class="nav-sell" href="#sell">Sell</a>
+        </div>
+      </header>
+
+      <div class="menu" id="menu" aria-hidden="true">
+        <nav class="menu-nav">
+          <a href="#" data-menu-close style="--i: 0">Home</a>
+          <a href="#shop" data-menu-close style="--i: 1">All Watches</a>
+          <a href="#sell" data-menu-close style="--i: 2">Sell My Timepiece</a>
+          <div class="menu-group" style="--i: 3">
+            <button class="menu-toggle" type="button" data-menu-toggle aria-expanded="false">Other Services</button>
+            <div class="menu-subs">
+              <div class="menu-subs-inner">
+                <a class="menu-sub" href="#about" data-menu-close>Concierge Repair Service</a>
+              </div>
+            </div>
+          </div>
+          <a href="#contact" data-menu-close style="--i: 4">Contact</a>
+          <div class="menu-group" style="--i: 5">
+            <button class="menu-toggle" type="button" data-menu-toggle aria-expanded="false">Media</button>
+            <div class="menu-subs">
+              <div class="menu-subs-inner">
+                <a class="menu-sub" href="#about" data-menu-close>Timepiece Education</a>
+                <a class="menu-sub" href="#about" data-menu-close>Media</a>
+              </div>
+            </div>
+          </div>
+          <a href="#shop" data-menu-close style="--i: 6">Merchandise</a>
+          <div class="menu-group" style="--i: 7">
+            <button class="menu-toggle" type="button" data-menu-toggle aria-expanded="false">Jewellery</button>
+            <div class="menu-subs">
+              <div class="menu-subs-inner">
+                <a class="menu-sub" href="#shop" data-menu-close>Ring</a>
+                <a class="menu-sub" href="#shop" data-menu-close>Necklace</a>
+                <a class="menu-sub" href="#shop" data-menu-close>Diamond</a>
+                <a class="menu-sub" href="#shop" data-menu-close>Gold</a>
+              </div>
+            </div>
+          </div>
+        </nav>
+        <div class="menu-aside">
+          <a href="tel:+13059229033" data-menu-close>+1 (305) 922-9033</a>
+          <a href="mailto:info@zivthewatchguy.com" data-menu-close>info@zivthewatchguy.com</a>
+          <div class="menu-socials">
+            <a href="https://www.facebook.com/Ziv.Tamis" target="_blank" rel="noreferrer" aria-label="Facebook" data-menu-close>
+              <svg viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M16 0C24.8366 0 32 7.16344 32 16C32 24.8366 24.8366 32 16 32C7.16344 32 0 24.8366 0 16C1.03081e-06 7.16344 7.16344 0 16 0ZM18.2725 9.60059C15.6022 9.60067 14.3398 11.1888 14.3398 14.21V15.0234H12.2354V17.2607H14.3398V22.7764H16.874V17.2656H18.9746L19.7441 15.0283H16.874V14.2393C16.874 13.3818 17.0252 12.7825 17.3271 12.4365C17.6293 12.0905 17.9612 11.915 18.5801 11.915C19.1011 11.9151 19.2426 11.9631 19.7441 12.0508V9.83887C19.2959 9.73167 19.091 9.60059 18.2725 9.60059Z" fill="currentColor"/></svg>
+            </a>
+            <a href="https://www.instagram.com/ziv.tamir/" target="_blank" rel="noreferrer" aria-label="Instagram" data-menu-close>
+              <svg viewBox="49.6939 0 32 32" fill="none" aria-hidden="true"><path d="M65.6939 0C74.5302 0.000239892 81.6939 7.16359 81.6939 16C81.6939 24.8364 74.5302 31.9998 65.6939 32C56.8573 32 49.6939 24.8366 49.6939 16C49.6939 7.16344 56.8573 0 65.6939 0ZM61.9341 10.541C60.8953 10.5411 60.0467 11.39 60.0464 12.4287V19.9473C60.0464 20.9862 60.8952 21.8359 61.9341 21.8359H69.4527C70.4963 21.8359 71.3404 20.9909 71.3404 19.9473V12.4287C71.3401 11.3899 70.4915 10.541 69.4527 10.541H61.9341ZM65.6958 13.292C66.4704 13.292 67.1993 13.5933 67.7466 14.1406C68.2939 14.6879 68.5953 15.4169 68.5953 16.1914C68.5952 16.9658 68.2937 17.694 67.7466 18.2412C67.1947 18.7885 66.4704 19.0898 65.6958 19.0898C64.9214 19.0898 64.1933 18.7884 63.646 18.2412C63.0988 17.694 62.7975 16.9658 62.7974 16.1914C62.7974 15.4168 63.0987 14.6879 63.646 14.1406C64.1933 13.5935 64.9214 13.292 65.6958 13.292ZM65.6958 13.9092C64.439 13.9093 63.4136 14.9299 63.4136 16.1914C63.4138 17.4481 64.4345 18.4725 65.6958 18.4727C66.9527 18.4727 67.9778 17.4528 67.9781 16.1914C67.9734 14.9344 66.9528 13.9092 65.6958 13.9092ZM69.1597 12.083C69.467 12.083 69.7162 12.3324 69.7164 12.6396C69.7164 12.9471 69.4671 13.1963 69.1597 13.1963C68.8524 13.1962 68.6031 12.947 68.6031 12.6396C68.6032 12.3324 68.8525 12.0831 69.1597 12.083Z" fill="currentColor"/></svg>
+            </a>
+            <a href="https://www.youtube.com/@itszivtamir" target="_blank" rel="noreferrer" aria-label="YouTube" data-menu-close>
+              <svg viewBox="99.3885 0 32 32" fill="none" aria-hidden="true"><path d="M115.388 0C124.225 0.000192479 131.388 7.16356 131.388 16C131.388 24.8364 124.225 31.9998 115.388 32C106.552 32 99.3885 24.8366 99.3885 16C99.3885 7.16344 106.552 0 115.388 0ZM110.023 10.3535C108.518 10.3535 107.294 11.6833 107.294 13.334V18.667C107.294 20.311 108.512 21.6475 110.023 21.6475H121.318C122.829 21.6473 124.053 20.3176 124.047 18.667V13.334C124.047 11.6901 122.829 10.3537 121.318 10.3535H110.023ZM118.634 15.917L113.882 18.6562V13.1768L118.634 15.917Z" fill="currentColor"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <section class="hero">
+        <div class="hero-image">
+          <img src="./images/hero.png" alt="" fetchpriority="high" />
+        </div>
+        <div class="hero-copy">
+          <p class="hero-kicker">Buy, sell, or trade with Ziv Tamir. FaceTime the cell. Same-day wire.</p>
+          <h1 class="hero-title">
+            The rest of the outfit<br />
+            is already decided
+          </h1>
+          <div class="hero-ctas">
+            <a class="btn btn--solid" href="#shop">Shop watches</a>
+            <a class="btn btn--ghost" href="#sell">Sell your piece</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="principles">
+        <p>
+          We have spent more then 20 years buying, selling, and trading watches from the Seybold Building in Downtown Miami - one conversation at a time. Every piece is inspected for what it is, not what a listing hopes it is. Offers are made the same day. Payment goes out the same day we agree. If we cannot stand behind it, we do not sell it.
+        </p>
+      </section>
+
+      <section class="available" id="shop">
+        <div class="available-head">
+          <h2 class="section-title">Available now</h2>
+          <span class="rule"></span>
+          <a class="see-all" href="#shop">SEE ALL</a>
+        </div>
+        <div class="cards">
+          <article class="product" data-product="breitling" role="button" tabindex="0">
+            <div class="product-media">
+              <div class="product-photo product-photo--breitling">
+                <img src="./images/b8d0e.png" alt="Breitling Heritage B20 Automatic" />
+              </div>
+              <div class="star">
+                <img src="./images/bf23c.svg" alt="" />
+              </div>
+            </div>
+            <div class="product-meta">
+              <h3 class="product-name">Breitling Heritage<br />B20 Automatic</h3>
+              <p class="product-desc product-desc--breitling"> watch&nbsp;featuring a striking blue sunburst dial and a matching blue rubber strap </p>
+              <p class="product-price">$22,500</p>
+            </div>
+          </article>
+          <article class="product" data-product="patek" role="button" tabindex="0">
+            <div class="product-media">
+              <div class="product-photo product-photo--patek">
+                <img src="./images/d3dfa.png" alt="Patek Philippe Perpetual Calendar" />
+              </div>
+              <div class="star star--patek">
+                <img src="./images/bf23c.svg" alt="" />
+              </div>
+            </div>
+            <div class="product-meta">
+              <h3 class="product-name">Patek Philippe<br />Perpetual Calendar</h3>
+              <p class="product-desc product-desc--patek">39mm Rose Gold Ivory Lacquered<br />Dial Brown Leather</p>
+              <p class="product-price">$38,900</p>
+            </div>
+          </article>
+          <article class="product" data-product="gmt" role="button" tabindex="0">
+            <div class="product-media">
+              <div class="product-photo product-photo--gmt">
+                <img src="./images/452ea.png" alt="Rolex GMT-Master II" />
+              </div>
+            </div>
+            <div class="product-meta">
+              <h3 class="product-name">Rolex<br />GMT-Master II</h3>
+              <p class="product-desc product-desc--rolex">Blue and Red Pepsi Bezel,<br />Meteorite Dial, Oyster Bracelet</p>
+              <p class="product-price">$44,400</p>
+            </div>
+          </article>
+          <article class="product" data-product="air-king" role="button" tabindex="0">
+            <div class="product-media">
+              <div class="product-photo product-photo--air">
+                <img src="./images/4c878.png" alt="Rolex Air King" />
+              </div>
+            </div>
+            <div class="product-meta">
+              <h3 class="product-name">Rolex<br />Air King </h3>
+              <p class="product-desc product-desc--rolex">Smooth Bezel Black Dial<br />Oyster Bracelet </p>
+              <p class="product-price">$14,400</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="love" data-love>
+        <div class="love-sticky">
+          <div class="love-head">
+            <p class="love-kicker">explore by brands</p>
+            <h2 class="love-title">WE SELL<br />WHAT WE LOVE</h2>
+          </div>
+          <div class="love-stage" data-love-hover>
+            <div class="love-titles">
+              <p class="love-name is-current" data-love-title>Breitling</p>
+              <p class="love-name" data-love-title>Patek Philippe</p>
+              <p class="love-name" data-love-title>Hublot</p>
+              <p class="love-name" data-love-title>Audemars Piguet</p>
+              <p class="love-name" data-love-title>Cartier</p>
+              <p class="love-name" data-love-title>Rolex</p>
+            </div>
+            <div class="love-visual">
+              <div class="love-frame">
+                <img data-love-image class="is-active" src="./images/053ea.png" alt="Breitling" />
+                <img data-love-image src="./images/b9c2c.png" alt="Patek Philippe" />
+                <img data-love-image src="./images/ea1fc.png" alt="Hublot" />
+                <img data-love-image src="./images/6c4de.png" alt="Audemars Piguet" />
+                <img data-love-image src="./images/3d52f.png" alt="Cartier" />
+                <img data-love-image src="./images/4fc47.png" alt="Rolex" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="marquee">
+        <div class="marquee-track marquee-track--left" data-marquee>
+          <div class="marquee-row marquee-row--1">
+            <div class="logo"><img src="./images/5a2c1.png" alt="" /></div>
+            <div class="logo"><img src="./images/b7545.png" alt="" /></div>
+            <div class="logo"><img src="./images/2f182.png" alt="" /></div>
+            <div class="logo"><img src="./images/2368e.png" alt="" /></div>
+            <div class="logo"><img src="./images/fe93f.png" alt="" /></div>
+            <div class="logo"><img src="./images/63056.png" alt="" /></div>
+            <div class="logo"><img src="./images/89a0e.png" alt="" /></div>
+            <div class="logo"><img src="./images/38393.png" alt="" /></div>
+            <div class="logo"><img src="./images/e0f38.png" alt="" /></div>
+            <div class="logo"><img src="./images/a7f3f.png" alt="" /></div>
+            <div class="logo"><img src="./images/7a7b9.png" alt="" /></div>
+            <div class="logo"><img src="./images/61990.png" alt="" /></div>
+            <div class="logo"><img src="./images/22ab1.png" alt="" /></div>
+            <div class="logo"><img src="./images/4b49e.png" alt="" /></div>
+            <div class="logo"><img src="./images/62fc4.png" alt="" /></div>
+            <div class="logo"><img src="./images/a4f75.png" alt="" /></div>
+          </div>
+        </div>
+        <div class="marquee-track marquee-track--right" data-marquee>
+          <div class="marquee-row marquee-row--2">
+            <div class="logo"><img src="./images/d694d.png" alt="" /></div>
+            <div class="logo"><img src="./images/a5097.png" alt="" /></div>
+            <div class="logo"><img src="./images/c6273.png" alt="" /></div>
+            <div class="logo"><img src="./images/75552.png" alt="" /></div>
+            <div class="logo"><img src="./images/fda21.png" alt="" /></div>
+            <div class="logo"><img src="./images/1dbc1.png" alt="" /></div>
+            <div class="logo"><img src="./images/d51b6.png" alt="" /></div>
+            <div class="logo"><img src="./images/d922c.png" alt="" /></div>
+            <div class="logo"><img src="./images/e0d08.png" alt="" /></div>
+            <div class="logo"><img src="./images/97eff.png" alt="" /></div>
+            <div class="logo"><img src="./images/fa67c.png" alt="" /></div>
+            <div class="logo"><img src="./images/3ff25.png" alt="" /></div>
+            <div class="logo"><img src="./images/67eaa.png" alt="" /></div>
+            <div class="logo"><img src="./images/84276.png" alt="" /></div>
+            <div class="logo"><img src="./images/e2385.png" alt="" /></div>
+            <div class="logo"><img src="./images/cdd98.png" alt="" /></div>
+            <div class="logo"><img src="./images/1d2ee.png" alt="" /></div>
+            <div class="logo"><img src="./images/9abef.png" alt="" /></div>
+            <div class="logo"><img src="./images/4a52e.png" alt="" /></div>
+            <div class="logo"><img src="./images/955cb.png" alt="" /></div>
+            <div class="logo"><img src="./images/79a01.png" alt="" /></div>
+          </div>
+        </div>
+      </section>
+
+      <div id="sell"></div>
+      <section class="method" id="about">
+        <div class="method-inner">
+          <div class="method-photo-wrap">
+            <div class="method-photo">
+              <img src="./images/8b38b.png" alt="Ziv Tamir" />
+            </div>
+          </div>
+          <div class="method-copy">
+            <h2>The "Ziv Method" </h2>
+            <p>
+              Proven and reliable strategy that guarantees you the optimal outcome in any luxury transaction, whether you are purchasing, selling, or trading. Let us secure the best possible deal or highest return for your luxury requirements! Feel free to reach out to us today via message, text, or FaceTime directly with Ziv on his cellphone at 305-922-9033. We welcome all major credit cards and proudly maintain an A+ rating with the Better Business Bureau.
+            </p>
+            <div class="signature">
+              <img src="./images/62fc2.png" alt="Ziv Tamir signature" />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <footer class="footer" id="contact">
+        <div class="signup">
+          <div class="signup-left">
+            <div class="signup-copy">
+              <h2>Be the first to know</h2>
+              <p>
+                Stay informed about the latest arrivals, exclusive releases, and insider<br />
+                products and offers via email.
+              </p>
+            </div>
+            <form class="signup-form" data-subscribe>
+              <input type="email" name="email" placeholder="Email" required />
+              <button type="submit">Subscribe</button>
+            </form>
+          </div>
+          <div class="signup-image">
+            <img src="./images/50836.png" alt="" />
+          </div>
+        </div>
+        <div class="footer-top">
+          <div class="footer-left">
+            <h3>Location</h3>
+            <p>
+              Seybold Building<br />
+              36 NE 1st Street, Suite 412<br />
+              Miami, FL 33132
+            </p>
+          </div>
+          <p class="footer-center">Ziv The Watch Guy</p>
+          <div class="footer-right">
+            <a class="footer-phone" href="tel:+13059229033">+1 (305) 922-9033</a>
+            <nav class="footer-nav">
+              <a href="#">Home</a>
+              <a href="#shop">Shop</a>
+              <a href="#sell">Sell</a>
+              <a href="#contact">Contact</a>
+            </nav>
+            <div class="socials">
+              <img src="./images/d5d8f.svg" alt="Social links" />
+            </div>
+          </div>
+        </div>
+        <div class="divider"></div>
+        <div class="footer-bottom">
+          <p>© 2025 Ziv Tamir. Not an authorized dealer. Trademarks belong to their owners.</p>
+          <p>Concept - not a live site.</p>
+        </div>
+      </footer>
+    </div>
+
+    <a class="love-cursor" data-love-cursor href="#shop">Shop<br />now</a>
+
+    <div class="pdp" id="pdp" aria-hidden="true">
+      <header class="pdp-nav">
+        <button class="pdp-back" type="button" data-pdp-close>Back to available now</button>
+        <a href="#" class="nav-logo pdp-logo" data-pdp-close>Ziv The Watch Guy</a>
+        <a class="pdp-phone" href="tel:+13059229033">+1 (305) 922-9033</a>
+      </header>
+      <div class="pdp-body">
+        <div class="pdp-media">
+          <img id="pdp-image" src="" alt="" />
+          <div class="pdp-badge" id="pdp-badge" hidden>
+            <img src="./images/bf23c.svg" alt="New" />
+          </div>
+        </div>
+        <div class="pdp-info">
+          <p class="pdp-kicker" id="pdp-brand"></p>
+          <h1 class="pdp-title" id="pdp-title"></h1>
+          <p class="pdp-price" id="pdp-price"></p>
+          <p class="pdp-desc" id="pdp-desc"></p>
+          <dl class="pdp-specs" id="pdp-specs"></dl>
+          <div class="pdp-ctas">
+            <a class="btn btn--solid-dark" href="tel:+13059229033">FaceTime the cell</a>
+            <a class="btn btn--ghost-dark" href="#contact" data-pdp-close>Inquire</a>
+          </div>
+          <p class="pdp-note">
+            Every piece is inspected for what it is, not what a listing hopes it is. Offers are made the same day. Payment goes out the same day we agree.
+          </p>
+        </div>
+      </div>
+      <section class="pdp-more">
+        <div class="available-head">
+          <h2 class="section-title">Also available</h2>
+          <span class="rule"></span>
+        </div>
+        <div class="cards pdp-more-cards" id="pdp-more"></div>
+      </section>
+    </div>
+
+  </body>
+</html>
