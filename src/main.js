@@ -70,6 +70,65 @@ const PRODUCTS = {
   },
 };
 
+const GLUE_WORDS = new Set([
+  "a",
+  "an",
+  "the",
+  "to",
+  "of",
+  "in",
+  "on",
+  "at",
+  "by",
+  "for",
+  "or",
+  "and",
+  "as",
+  "is",
+  "if",
+  "it",
+  "we",
+  "not",
+  "nor",
+  "but",
+  "from",
+  "with",
+  "into",
+  "onto",
+  "upon",
+  "via",
+  "per",
+  "vs",
+  "than",
+  "then",
+  "off",
+  "out",
+  "up",
+]);
+
+function glueHanging(root = document.body) {
+  const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
+    acceptNode(node) {
+      const el = node.parentElement;
+      if (!el || el.closest("script, style, textarea, noscript")) {
+        return NodeFilter.FILTER_REJECT;
+      }
+      if (!node.nodeValue || !/[ \t]/.test(node.nodeValue)) {
+        return NodeFilter.FILTER_REJECT;
+      }
+      return NodeFilter.FILTER_ACCEPT;
+    },
+  });
+  const nodes = [];
+  while (walker.nextNode()) nodes.push(walker.currentNode);
+  const re = /([A-Za-z][A-Za-z'.]*)( +)(?=[A-Za-z0-9$“"'])/g;
+  for (const node of nodes) {
+    node.nodeValue = node.nodeValue.replace(re, (full, word, space) =>
+      GLUE_WORDS.has(word.toLowerCase()) ? `${word}\u00A0` : full
+    );
+  }
+}
+
 document.querySelector("[data-subscribe]")?.addEventListener("submit", (event) => {
   event.preventDefault();
 });
@@ -84,6 +143,7 @@ const lenis = new Lenis({
   duration: 1.2,
   smoothWheel: true,
   wheelMultiplier: 0.9,
+  prevent: (node) => Boolean(node.closest(".pdp, .menu")),
 });
 
 function raf(time) {
@@ -94,6 +154,22 @@ requestAnimationFrame(raf);
 
 const loader = document.querySelector("[data-loader]");
 const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+let heroBannerStarted = false;
+
+function startHeroBanner() {
+  if (heroBannerStarted || reduceMotion) return;
+  const slides = [...document.querySelectorAll(".hero-image img")];
+  if (slides.length < 2) return;
+  heroBannerStarted = true;
+  let i = slides.findIndex((slide) => slide.classList.contains("is-active"));
+  if (i < 0) i = 0;
+  window.setInterval(() => {
+    slides[i].classList.remove("is-active");
+    i = (i + 1) % slides.length;
+    slides[i].classList.add("is-active");
+  }, 4000);
+}
 
 if (loader && document.body.classList.contains("is-loading")) {
   lenis.stop();
@@ -129,6 +205,7 @@ if (loader && document.body.classList.contains("is-loading")) {
       loader.remove();
       lenis.start();
       syncScene(lenis.scroll);
+      startHeroBanner();
       return;
     }
     loader.classList.add("is-leaving");
@@ -138,6 +215,7 @@ if (loader && document.body.classList.contains("is-loading")) {
       lenis.start();
       syncScene(lenis.scroll);
       loader.remove();
+      startHeroBanner();
     }, FADE);
   };
 
@@ -189,6 +267,7 @@ const heroCopy = document.querySelector(".hero-copy");
 const menu = document.getElementById("menu");
 const menuOpenBtn = document.querySelector("[data-menu-open]");
 const loveSection = document.querySelector("[data-love]");
+const loveCopy = document.querySelector(".love-copy");
 const loveTitles = [...document.querySelectorAll("[data-love-title]")];
 const loveImages = [...document.querySelectorAll("[data-love-image]")];
 
@@ -201,12 +280,30 @@ function clamp(value, min, max) {
 }
 
 function syncLove() {
-  if (!loveSection || !loveTitles.length) return;
+  if (!loveSection) return;
   const rect = loveSection.getBoundingClientRect();
   const view = window.innerHeight;
   const total = Math.max(1, rect.height - view);
   const progress = clamp(-rect.top / total, 0, 0.999);
-  const index = Math.min(loveTitles.length - 1, Math.floor(progress * loveTitles.length));
+
+  if (loveCopy) {
+    if (reduceMotion) {
+      loveCopy.style.transform = "";
+    } else {
+      const ease = progress * 0.35 + progress * progress * 0.65;
+      const factor = window.innerWidth <= 639 ? 0.12 : 0.22;
+      loveCopy.style.transform = `translate3d(0, ${(-ease * factor * view).toFixed(2)}px, 0)`;
+    }
+  }
+
+  if (!loveTitles.length) return;
+  const raw = progress * loveTitles.length;
+  let index = Math.min(loveTitles.length - 1, Math.floor(raw));
+  if (loveIndex >= 0 && index !== loveIndex) {
+    const edge = index > loveIndex ? loveIndex + 1 : loveIndex;
+    if (index > loveIndex && raw < edge + 0.12) index = loveIndex;
+    if (index < loveIndex && raw > edge - 0.12) index = loveIndex;
+  }
   if (index === loveIndex) return;
   loveIndex = index;
   loveTitles.forEach((el, i) => {
@@ -234,12 +331,12 @@ function syncScene(y) {
   if (nav) {
     if (y <= 16) {
       passedHero = false;
-      nav.classList.remove("is-away", "is-compact");
+      nav.classList.remove("is-away", "is-compact", "is-over-hero");
       nav.style.transform = "";
     } else if (!passedHero && y < heroH) {
       const t = clamp((y - 16) / (heroH * 0.38), 0, 1);
-      nav.classList.remove("is-compact");
-      nav.style.transform = `translateY(${-t * 170}px)`;
+      nav.classList.remove("is-compact", "is-over-hero");
+      nav.style.transform = `translateY(${-t * (nav.offsetHeight + 12)}px)`;
       nav.classList.toggle("is-away", t >= 1);
       if (y > heroH * 0.92) passedHero = true;
     } else {
@@ -247,10 +344,11 @@ function syncScene(y) {
       nav.style.transform = "";
       if (goingUp) {
         nav.classList.add("is-compact");
+        nav.classList.toggle("is-over-hero", y < heroH);
         nav.classList.remove("is-away");
       } else if (goingDown) {
         nav.classList.add("is-away");
-        nav.classList.remove("is-compact");
+        nav.classList.remove("is-compact", "is-over-hero");
       }
     }
   }
@@ -263,7 +361,8 @@ lenis.on("scroll", ({ scroll }) => syncScene(scroll));
 const loveHover = document.querySelector("[data-love-hover]");
 const loveCursor = document.querySelector("[data-love-cursor]");
 
-if (loveHover && loveCursor) {
+const canHover = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+if (loveHover && loveCursor && canHover) {
   const moveCursor = (event) => {
     loveCursor.classList.add("is-on");
     loveCursor.style.transform = `translate(${event.clientX}px, ${event.clientY}px) translate(-50%, -50%)`;
@@ -330,9 +429,10 @@ function renderPdp(product) {
 
   pdpMore.innerHTML = Object.values(PRODUCTS)
     .filter((item) => item.id !== product.id)
+    .slice(0, 2)
     .map(
       (item) => `
-        <article class="product" data-product="${item.id}" role="button" tabindex="0">
+        <article class="product">
           <div class="product-media">
             <div class="product-photo">
               <img src="${item.image}" alt="${item.brand} ${item.name}" />
@@ -340,22 +440,26 @@ function renderPdp(product) {
             ${item.badge ? `<div class="star"><img src="${img("bf23c.svg")}" alt="" /></div>` : ""}
           </div>
           <div class="product-meta">
-            <h3 class="product-name">${item.brand}<br />${item.name}</h3>
+            <h3 class="product-name"><span>${item.brand}</span><span>${item.name}</span></h3>
             <p class="product-price">${item.price}</p>
           </div>
         </article>`
     )
     .join("");
+  glueHanging(pdp);
 }
 
 function openPdp(id, writeHistory = true) {
   const product = PRODUCTS[id];
   if (!product || !pdp) return;
+  closeMenu();
   renderPdp(product);
   pdp.classList.add("is-open");
   pdp.setAttribute("aria-hidden", "false");
   document.body.classList.add("pdp-open");
   pdp.scrollTop = 0;
+  document.querySelector(".pdp-body")?.scrollTo(0, 0);
+  document.querySelector(".pdp-side")?.scrollTo(0, 0);
   lenis.stop();
   const next = `#watch/${id}`;
   if (writeHistory && location.hash !== next) {
@@ -375,31 +479,21 @@ function closePdp() {
 }
 
 function productFromEvent(event) {
-  const card = event.target.closest("[data-product]");
+  const card = event.target.closest(".available [data-product]");
   return card?.dataset.product;
 }
 
 document.addEventListener("click", (event) => {
+  if (event.target.closest(".is-inert")) {
+    event.preventDefault();
+    return;
+  }
+
   if (event.target.closest(".nav-logo")) {
     event.preventDefault();
     closeMenu();
     closePdp();
     lenis.scrollTo(0);
-    return;
-  }
-
-  if (event.target.closest(".nav-cart")) {
-    event.preventDefault();
-    closeMenu();
-    closePdp();
-    lenis.scrollTo("#shop", { offset: -20 });
-    return;
-  }
-
-  if (event.target.closest(".nav-sell")) {
-    event.preventDefault();
-    closeMenu();
-    lenis.scrollTo("#sell", { offset: -20 });
     return;
   }
 
@@ -438,16 +532,6 @@ document.addEventListener("click", (event) => {
   if (event.target.closest("[data-pdp-close]")) {
     event.preventDefault();
     closePdp();
-    const href = event.target.closest("a")?.getAttribute("href");
-    if (href && href.startsWith("#") && href !== "#") {
-      document.querySelector(href) && lenis.scrollTo(href, { offset: -20 });
-    }
-    return;
-  }
-
-  if (event.target.closest("[data-love-hover]")) {
-    event.preventDefault();
-    lenis.scrollTo("#shop", { offset: -20 });
     return;
   }
 
@@ -465,7 +549,8 @@ document.addEventListener("keydown", (event) => {
     return;
   }
   if (event.key !== "Enter" && event.key !== " ") return;
-  const id = document.activeElement?.dataset?.product;
+  const card = document.activeElement?.closest?.(".available [data-product]");
+  const id = card?.dataset?.product;
   if (!id) return;
   event.preventDefault();
   openPdp(id);
@@ -484,6 +569,36 @@ window.addEventListener("popstate", () => {
     document.body.classList.remove("pdp-open");
   }
 });
+
+function initMethodSlider() {
+  const root = document.querySelector("[data-method-slider]");
+  if (!root) return;
+  const slides = [...root.querySelectorAll("img")];
+  const prev = root.querySelector("[data-method-prev]");
+  const next = root.querySelector("[data-method-next]");
+  const dots = [...document.querySelectorAll("[data-method-dots] .method-dot")];
+  if (slides.length < 2) return;
+  let index = slides.findIndex((slide) => slide.classList.contains("is-active"));
+  if (index < 0) index = 0;
+
+  const show = (nextIndex) => {
+    index = (nextIndex + slides.length) % slides.length;
+    slides.forEach((slide, i) => slide.classList.toggle("is-active", i === index));
+    dots.forEach((dot, i) => dot.classList.toggle("is-active", i === index));
+  };
+
+  prev?.addEventListener("click", () => show(index - 1));
+  next?.addEventListener("click", () => show(index + 1));
+  dots.forEach((dot, i) => dot.addEventListener("click", () => show(i)));
+}
+
+initMethodSlider();
+
+glueHanging();
+
+if (!loader || !document.body.classList.contains("is-loading")) {
+  startHeroBanner();
+}
 
 const initial = location.hash.match(/^#watch\/(.+)$/);
 if (initial && PRODUCTS[initial[1]]) openPdp(initial[1], false);
