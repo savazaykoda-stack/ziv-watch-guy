@@ -27,7 +27,7 @@
         align-items: center;
         justify-content: center;
         background: #0b0b0b;
-        color: #f6f1e8;
+        color: #f3f3f1;
       }
       .loader-pair {
         display: flex;
@@ -43,8 +43,8 @@
         user-select: none;
       }
     </style>
-    <script type="module" crossorigin src="/ziv-watch-guy/assets/index-BPhFXsfL.js"></script>
-    <link rel="stylesheet" crossorigin href="/ziv-watch-guy/assets/index-CD9GEiN0.css">
+    <script type="module" crossorigin src="/ziv-watch-guy/assets/index-A_YHjptv.js"></script>
+    <link rel="stylesheet" crossorigin href="/ziv-watch-guy/assets/index-CN0Gizdg.css">
   </head>
   <body class="is-loading">
     <div class="loader" data-loader role="status" aria-live="polite" aria-label="Loading">
@@ -61,22 +61,30 @@
           <img class="nav-logo-mark" src="./images/logo-mob.svg" alt="" />
         </a>
         <div class="nav-end">
-          <a class="nav-cart" href="#shop" aria-label="Cart">
+          <div class="nav-search is-inert" aria-hidden="true">
+            <input type="search" placeholder="Search" aria-label="Search watches" tabindex="-1" aria-disabled="true" />
+            <button class="nav-search-btn" type="button" aria-label="Search" tabindex="-1" aria-disabled="true">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <circle cx="11" cy="11" r="6.25" stroke="currentColor" stroke-width="1.7"/>
+                <path d="M15.8 15.8L20 20" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+              </svg>
+            </button>
+          </div>
+          <span class="nav-cart is-inert" aria-hidden="true">
             <svg viewBox="0 0 48 48" fill="none" aria-hidden="true">
               <path d="M23.9998 4.59375C28.0902 4.59375 31.406 7.90964 31.406 12V12.5937H35.9998L36.1355 12.6006C36.8085 12.6652 37.3493 13.2056 37.4021 13.8926L39.4021 39.8926C39.432 40.2828 39.2978 40.6678 39.032 40.9551C38.7659 41.2424 38.3914 41.4062 37.9998 41.4062H9.99979C9.60824 41.4061 9.23362 41.2424 8.96756 40.9551C8.70192 40.6679 8.56757 40.2827 8.59745 39.8926L10.5974 13.8926C10.6538 13.1601 11.2652 12.594 11.9998 12.5937H16.5935V12C16.5935 7.90977 19.9096 4.59397 23.9998 4.59375ZM11.5183 38.5937H36.4812L34.6971 15.4062H31.406V18C31.406 18.7766 30.7764 19.4062 29.9998 19.4062C29.2233 19.406 28.5935 18.7765 28.5935 18V15.4062H19.406V18C19.406 18.7766 18.7764 19.4062 17.9998 19.4062C17.2233 19.406 16.5935 18.7765 16.5935 18V15.4062H13.3025L11.5183 38.5937ZM23.9998 7.40625C21.4629 7.40647 19.406 9.46308 19.406 12V12.5937H28.5935V12C28.5935 9.46294 26.5368 7.40625 23.9998 7.40625Z" fill="currentColor"/>
             </svg>
-          </a>
-          <a class="nav-sell" href="#sell">Sell</a>
+          </span>
         </div>
       </header>
 
-      <div class="menu" id="menu" aria-hidden="true">
+      <div class="menu" id="menu" aria-hidden="true" data-lenis-prevent>
         <nav class="menu-nav">
           <a href="#" data-menu-close style="--i: 0">Home</a>
           <a href="#shop" data-menu-close style="--i: 1">All Watches</a>
           <a href="#sell" data-menu-close style="--i: 2">Sell My Timepiece</a>
-          <div class="menu-group" style="--i: 3">
-            <button class="menu-toggle" type="button" data-menu-toggle aria-expanded="false">Other Services</button>
+          <div class="menu-group is-inert" style="--i: 3">
+            <button class="menu-toggle" type="button" aria-expanded="false" tabindex="-1">Other Services</button>
             <div class="menu-subs">
               <div class="menu-subs-inner">
                 <a class="menu-sub" href="#about" data-menu-close>Concierge Repair Service</a>
@@ -84,8 +92,8 @@
             </div>
           </div>
           <a href="#contact" data-menu-close style="--i: 4">Contact</a>
-          <div class="menu-group" style="--i: 5">
-            <button class="menu-toggle" type="button" data-menu-toggle aria-expanded="false">Media</button>
+          <div class="menu-group is-inert" style="--i: 5">
+            <button class="menu-toggle" type="button" aria-expanded="false" tabindex="-1">Media</button>
             <div class="menu-subs">
               <div class="menu-subs-inner">
                 <a class="menu-sub" href="#about" data-menu-close>Timepiece Education</a>
@@ -93,9 +101,9 @@
               </div>
             </div>
           </div>
-          <a href="#shop" data-menu-close style="--i: 6">Merchandise</a>
-          <div class="menu-group" style="--i: 7">
-            <button class="menu-toggle" type="button" data-menu-toggle aria-expanded="false">Jewellery</button>
+          <a class="is-inert" href="#shop" style="--i: 6" tabindex="-1" aria-disabled="true">Merchandise</a>
+          <div class="menu-group is-inert" style="--i: 7">
+            <button class="menu-toggle" type="button" aria-expanded="false" tabindex="-1">Jewellery</button>
             <div class="menu-subs">
               <div class="menu-subs-inner">
                 <a class="menu-sub" href="#shop" data-menu-close>Ring</a>
@@ -125,17 +133,18 @@
 
       <section class="hero">
         <div class="hero-image">
-          <img src="./images/hero.png" alt="" fetchpriority="high" />
+          <img class="is-active hero-slide-a" src="./images/hero.png" alt="" fetchpriority="high" />
+          <img class="hero-slide-b" src="./images/hero-b.png" alt="" fetchpriority="low" />
         </div>
         <div class="hero-copy">
-          <p class="hero-kicker">Buy, sell, or trade with Ziv Tamir.</p>
+          <p class="hero-kicker">Buy, sell, or trade with Ziv Tamir</p>
           <h1 class="hero-title">
             <span>Easy Deal Same&#8209;Day</span>
             <span>With Someone You Trust</span>
           </h1>
           <div class="hero-ctas">
-            <a class="btn btn--solid" href="#shop">Shop watches</a>
-            <a class="btn btn--ghost" href="#sell">Sell your piece</a>
+            <span class="btn btn--glass btn--glass-fill is-inert">Shop watches</span>
+            <span class="btn btn--glass btn--glass-text is-inert">Sell your piece</span>
           </div>
         </div>
       </section>
@@ -150,7 +159,7 @@
         <div class="available-head">
           <h2 class="section-title">Available Now</h2>
           <span class="rule"></span>
-          <a class="see-all" href="#shop">SEE ALL</a>
+          <span class="see-all is-inert">SEE ALL</span>
         </div>
         <div class="cards">
           <article class="product" data-product="breitling" role="button" tabindex="0">
@@ -163,8 +172,8 @@
               </div>
             </div>
             <div class="product-meta">
-              <h3 class="product-name">Breitling Heritage<br />B20 Automatic</h3>
-              <p class="product-desc product-desc--breitling">Watch featuring a striking blue sunburst dial and a matching blue rubber strap</p>
+              <h3 class="product-name"><span>Breitling</span><span>Heritage B20 Automatic</span></h3>
+              <p class="product-desc">Watch featuring a striking blue sunburst dial and a matching blue rubber strap</p>
               <p class="product-price">$22,500</p>
             </div>
           </article>
@@ -178,8 +187,8 @@
               </div>
             </div>
             <div class="product-meta">
-              <h3 class="product-name">Patek Philippe<br />Perpetual Calendar</h3>
-              <p class="product-desc product-desc--patek">39mm Rose Gold Ivory Lacquered<br />Dial Brown Leather</p>
+              <h3 class="product-name"><span>Patek Philippe</span><span>Perpetual Calendar</span></h3>
+              <p class="product-desc">39mm Rose Gold Ivory Lacquered<br />Dial Brown Leather</p>
               <p class="product-price">$38,900</p>
             </div>
           </article>
@@ -190,8 +199,8 @@
               </div>
             </div>
             <div class="product-meta">
-              <h3 class="product-name">Rolex<br />GMT-Master II</h3>
-              <p class="product-desc product-desc--rolex">Blue and Red Pepsi Bezel,<br />Meteorite Dial, Oyster Bracelet</p>
+              <h3 class="product-name"><span>Rolex</span><span>GMT-Master II</span></h3>
+              <p class="product-desc">Blue and Red Pepsi Bezel,<br />Meteorite Dial, Oyster Bracelet</p>
               <p class="product-price">$44,400</p>
             </div>
           </article>
@@ -202,8 +211,8 @@
               </div>
             </div>
             <div class="product-meta">
-              <h3 class="product-name">Rolex<br />Air King </h3>
-              <p class="product-desc product-desc--rolex">Smooth Bezel Black Dial<br />Oyster Bracelet </p>
+              <h3 class="product-name"><span>Rolex</span><span>Air King</span></h3>
+              <p class="product-desc">Smooth Bezel Black Dial<br />Oyster Bracelet</p>
               <p class="product-price">$14,400</p>
             </div>
           </article>
@@ -212,18 +221,23 @@
 
       <section class="love" data-love>
         <div class="love-sticky">
-          <div class="love-head">
-            <p class="love-kicker">explore by brands</p>
-            <h2 class="love-title">We Sell<br />What We Love</h2>
-          </div>
           <div class="love-stage" data-love-hover>
-            <div class="love-titles">
-              <p class="love-name is-current" data-love-title>Breitling</p>
-              <p class="love-name" data-love-title>Patek Philippe</p>
-              <p class="love-name" data-love-title>Hublot</p>
-              <p class="love-name" data-love-title>Audemars Piguet</p>
-              <p class="love-name" data-love-title>Cartier</p>
-              <p class="love-name" data-love-title>Rolex</p>
+            <div class="love-copy">
+              <div class="love-head">
+                <p class="love-kicker">explore by brands</p>
+                <h2 class="love-title">
+                  <span>The Names</span>
+                  <span>We Stand Behind</span>
+                </h2>
+              </div>
+              <div class="love-titles">
+                <p class="love-name is-current" data-love-title>Breitling</p>
+                <p class="love-name" data-love-title>Patek Philippe</p>
+                <p class="love-name" data-love-title>Hublot</p>
+                <p class="love-name" data-love-title>Audemars Piguet</p>
+                <p class="love-name" data-love-title>Cartier</p>
+                <p class="love-name" data-love-title>Rolex</p>
+              </div>
             </div>
             <div class="love-visual">
               <div class="love-frame">
@@ -290,11 +304,17 @@
       <div id="sell"></div>
       <section class="method" id="about">
         <div class="method-inner">
-          <div class="method-photo-wrap">
-            <div class="method-photo">
-              <img src="./images/8b38b.png" alt="Ziv Tamir" />
+          <div class="method-photo" data-method-slider>
+              <img class="is-active" src="./images/8b38b.png" alt="Ziv Tamir in the Seybold shop" />
+              <img src="./images/8b8e0.png" alt="Ziv Tamir with a client" />
+              <img src="./images/59a40.png" alt="Ziv Tamir with a client" />
+              <button class="method-slider-btn method-slider-btn--prev" type="button" data-method-prev aria-label="Previous photo">
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M14.5 5.5 8 12l6.5 6.5" stroke="currentColor" stroke-width="1.5"/></svg>
+              </button>
+              <button class="method-slider-btn method-slider-btn--next" type="button" data-method-next aria-label="Next photo">
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9.5 5.5 16 12l-6.5 6.5" stroke="currentColor" stroke-width="1.5"/></svg>
+              </button>
             </div>
-          </div>
           <div class="method-copy">
             <h2>The "Ziv Method" </h2>
             <p>
@@ -303,6 +323,11 @@
             <div class="signature">
               <img src="./images/62fc2.png" alt="Ziv Tamir signature" />
             </div>
+          </div>
+          <div class="method-dots" data-method-dots>
+            <button class="method-dot is-active" type="button" aria-label="Photo 1"></button>
+            <button class="method-dot" type="button" aria-label="Photo 2"></button>
+            <button class="method-dot" type="button" aria-label="Photo 3"></button>
           </div>
         </div>
       </section>
@@ -317,9 +342,9 @@
                 products and offers via email.
               </p>
             </div>
-            <form class="signup-form" data-subscribe>
-              <input type="email" name="email" placeholder="Email" required />
-              <button type="submit">Subscribe</button>
+            <form class="signup-form is-inert" data-subscribe>
+              <input type="email" name="email" placeholder="Email" tabindex="-1" aria-disabled="true" />
+              <button type="button" tabindex="-1" aria-disabled="true">Subscribe</button>
             </form>
           </div>
           <div class="signup-image">
@@ -357,9 +382,9 @@
       </footer>
     </div>
 
-    <a class="love-cursor" data-love-cursor href="#shop">Shop<br />now</a>
+    <span class="love-cursor is-inert" data-love-cursor>Shop<br />now</span>
 
-    <div class="pdp" id="pdp" aria-hidden="true">
+    <div class="pdp" id="pdp" aria-hidden="true" data-lenis-prevent>
       <header class="pdp-nav">
         <button class="pdp-back" type="button" data-pdp-close>Back<span class="pdp-back-rest"> to available now</span></button>
         <a href="#" class="nav-logo pdp-logo" data-pdp-close aria-label="Ziv The Watch Guy">
@@ -375,28 +400,32 @@
             <img src="./images/bf23c.svg" alt="New" />
           </div>
         </div>
-        <div class="pdp-info">
-          <p class="pdp-kicker" id="pdp-brand"></p>
-          <h1 class="pdp-title" id="pdp-title"></h1>
-          <p class="pdp-price" id="pdp-price"></p>
-          <p class="pdp-desc" id="pdp-desc"></p>
-          <dl class="pdp-specs" id="pdp-specs"></dl>
-          <div class="pdp-ctas">
-            <a class="btn btn--solid-dark" href="tel:+13059229033">FaceTime the cell</a>
-            <a class="btn btn--ghost-dark" href="#contact" data-pdp-close>Inquire</a>
+        <div class="pdp-side">
+          <div class="pdp-info">
+            <div class="pdp-head">
+              <p class="pdp-kicker" id="pdp-brand"></p>
+              <h1 class="pdp-title" id="pdp-title"></h1>
+            </div>
+            <p class="pdp-price" id="pdp-price"></p>
+            <p class="pdp-desc" id="pdp-desc"></p>
+            <dl class="pdp-specs" id="pdp-specs"></dl>
+            <div class="pdp-ctas">
+              <span class="btn btn--glass btn--glass-fill btn--on-paper is-inert">FaceTime the cell</span>
+              <span class="btn btn--glass btn--glass-text btn--on-paper is-inert">Inquire</span>
+            </div>
+            <p class="pdp-note">
+              Every piece is inspected for what it is, not what a listing hopes it is. Offers are made the same day. Payment goes out the same day we agree.
+            </p>
           </div>
-          <p class="pdp-note">
-            Every piece is inspected for what it is, not what a listing hopes it is. Offers are made the same day. Payment goes out the same day we agree.
-          </p>
+          <section class="pdp-more">
+            <div class="available-head">
+              <h2 class="section-title">Also Available</h2>
+              <span class="rule"></span>
+            </div>
+            <div class="cards pdp-more-cards" id="pdp-more"></div>
+          </section>
         </div>
       </div>
-      <section class="pdp-more">
-        <div class="available-head">
-          <h2 class="section-title">Also Available</h2>
-          <span class="rule"></span>
-        </div>
-        <div class="cards pdp-more-cards" id="pdp-more"></div>
-      </section>
     </div>
 
   </body>
