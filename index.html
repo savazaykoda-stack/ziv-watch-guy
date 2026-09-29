@@ -11,7 +11,8 @@
       href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500&family=Piazzolla:opsz,wght@8..30,400&family=WindSong&display=swap"
       rel="stylesheet"
     />
-    <link rel="preload" as="image" href="./images/hero.webp" fetchpriority="high" />
+    <link rel="preload" as="image" href="./images/hero.webp" fetchpriority="high" media="(min-width: 901px)" />
+    <link rel="preload" as="image" href="./images/hero-mob.webp" fetchpriority="high" media="(max-width: 900px)" />
     <style>
       html,
       body {
@@ -44,8 +45,8 @@
         user-select: none;
       }
     </style>
-    <script type="module" crossorigin src="/ziv-watch-guy/assets/index-CBy5Z2ib.js"></script>
-    <link rel="stylesheet" crossorigin href="/ziv-watch-guy/assets/index-Bc7Q5KuI.css">
+    <script type="module" crossorigin src="/ziv-watch-guy/assets/index-BiDsqc8C.js"></script>
+    <link rel="stylesheet" crossorigin href="/ziv-watch-guy/assets/index-ZU0dGE-N.css">
   </head>
   <body class="is-loading">
     <div class="loader" data-loader role="status" aria-live="polite" aria-label="Loading">
@@ -134,8 +135,9 @@
 
       <section class="hero">
         <div class="hero-image">
-          <img class="is-active hero-slide-a" src="./images/hero.webp" alt="" width="2048" height="1234" fetchpriority="high" decoding="async" />
-          <img class="hero-slide-b" src="./images/hero-b.webp" alt="" width="2048" height="1201" fetchpriority="low" decoding="async" />
+          <img class="is-active hero-slide-a hero-desk" src="./images/hero.webp" alt="" width="2048" height="1234" fetchpriority="high" decoding="async" />
+          <img class="hero-slide-b hero-desk" src="./images/hero-b.webp" alt="" width="2048" height="1201" fetchpriority="low" decoding="async" />
+          <img class="is-active hero-slide-a hero-mob" src="./images/hero-mob.webp" alt="" width="855" height="1358" fetchpriority="high" decoding="async" />
         </div>
         <div class="hero-copy">
           <p class="hero-kicker">Buy, sell, or trade with Ziv Tamir</p>
